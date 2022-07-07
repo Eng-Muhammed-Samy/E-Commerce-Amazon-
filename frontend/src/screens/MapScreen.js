@@ -27,7 +27,6 @@ export default function MapScreen() {
   const markerRef = useRef(null);
 
   const getUserCurrentLocation = () => {
-    console.log("Hello");
     if (!navigator.geolocation) {
       alert('Geolocation os not supported by this browser');
     } else {
