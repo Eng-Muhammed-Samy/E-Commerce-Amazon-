@@ -27,6 +27,7 @@ export default function MapScreen() {
   const markerRef = useRef(null);
 
   const getUserCurrentLocation = () => {
+    console.log("Hello");
     if (!navigator.geolocation) {
       alert('Geolocation os not supported by this browser');
     } else {
@@ -47,6 +48,7 @@ export default function MapScreen() {
       const { data } = await axios('/api/keys/google', {
         headers: { Authorization: `BEARER ${userInfo.token}` },
       });
+      console.log("Inside Use Effect");
       setGoogleApiKey(data.key);
       getUserCurrentLocation();
     };
@@ -55,7 +57,7 @@ export default function MapScreen() {
     ctxDispatch({
       type: 'SET_FULLBOX_ON',
     });
-  }, [ctxDispatch]);
+  }, [ctxDispatch, userInfo.token]);
 
   const onLoad = (map) => {
     mapRef.current = map;
